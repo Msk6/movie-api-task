@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<br>
+<div class="row">
+    {% for movie in movies.Search %}
+    <div class="col-md-4">
+        <div class="card my-card">
+            <img class="card-img-top" src="{{movie.Poster}}" alt="Hey Noob, look at me...">
+          <div class="card-body">
+              <a href="{% url 'detail' movie.imdbID %}">
+            <h5 class="card-title">{{movie.Title}}</h5>
+        </a>
+            <p class="card-text">{{movie.Year}}</p>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
