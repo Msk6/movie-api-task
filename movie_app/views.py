@@ -5,8 +5,13 @@ from django.http import JsonResponse
 # Create your views here.
 
 def movie_list(request):
+    movie_title = request.GET.get('movie')
     key = '93ca9100'
-    url = f"http://www.omdbapi.com/?apikey={key}&s=lion king"
+    if movie_title:
+        url = f"http://www.omdbapi.com/?apikey={key}&s={movie_title}"
+    else:
+        url = f"http://www.omdbapi.com/?apikey={key}&s=all"
+        
     response = requests.get(url).json()
 
     context ={
